@@ -1,15 +1,26 @@
 <div id="main_content">	
-	<div class="">
-		<input type="text" class="form-control" id="search" placeholder="Buscar">
-		<a href="">		
-			<button type="button" class="btn btn-primary button">Buscar</button>
+	<div id="content_">
+		<form id="form1" method="get" class="form-inline" role="form" action=<?php echo site_url('admin_user/crud_user_controller/search_user'); ?>>
+		<div class="form-group pull-right">						
+			<select class="form-control" id="option">
+				<option>Usuario</option>		
+				<option id="nivel">Nivel</option>		
+			</select>
+			
+			<div class="form-group" id="div_reload"> 
+				<input type="text" class="form-control" id="search" placeholder="Buscar" name="Buscar">					
+			</div>
+			
+			
+			
+			<button type="submit" id="hola" class="btn btn-primary button" >Buscar</button>		
+			<a href="<?= site_url('admin_user/user_links_controller/add_user'); ?>">		
+			<button type="button" class="btn btn-primary button">Añadir Usuario</button>
 		</a>
-	</div>
+		</div>
+	</form>	
 	
-	<a href="<?= site_url('admin_user/user_links_controller/add_user'); ?>">		
-		<button type="button" class="btn btn-primary button">Añadir Usuario</button>
-	</a>
-
+	<h1>Usuarios</h1>
 	<table class="table table-hover">
 		<th> Usuario </th>
 		<th> Password </th>
@@ -33,6 +44,7 @@
 		}
 	 ?>
 	 </table>
+	</div>
 	 <script type="text/javascript" src="<?php echo base_url('/public/js/reload.js') ?>"></script>	
 </div>
 

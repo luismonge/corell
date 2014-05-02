@@ -32,6 +32,34 @@ class User_model extends CI_Model{
 		
 	}
 	
+	function search_user($search, $option)
+	{
+		$this->db->select('*');
+		$this->db->from('usuario');
+		//$this-> db-> where('username !=', $id);	
+
+		switch ($option) {
+			case "Usuario":
+				$this->db->where('username', $search);
+
+				break;
+			
+			case 'Nivel':
+				$this->db->where('nivel_seguridad', $search);
+				break;
+		}
+
+		$result = $this->db->get();	
+		
+		return $result;
+	}
+
+	function edit_user($data, $username)
+	{
+		$this->db->where('username', $username);
+		$this->db->update('usuario', $data);
+	}
+
 	function login($username, $password)
 	{
 		$this-> db-> select('username, pass');

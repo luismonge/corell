@@ -17,6 +17,7 @@ class Only_authenticaded_users extends CI_Controller {
 		{
 			$session_data = $this->session->userdata('logged_in');
 			$data['username'] = $session_data['username'];
+			$this->load->helper('form');				
 			$this->load->view('admin/admin_index', $data);
 		}										
 		else

@@ -40,16 +40,21 @@ class Crud_user_controller extends CI_Controller {
 			$this->load->model('/admin/user/user_model', 'user_model');
 			
 					
-			$username = $this->input->post('username');
-			$pass = $this->input->post('password');
+			$username = $this->input->get('username');
+			$pass = $this->input->get('password');
+			$nivel = $this->input->get('nivel');
 	
 			$data = array(
 				'username' => $username,
-				'pass' => MD5($pass)
+				'pass' => MD5($pass),
+				'nivel_seguridad' => $nivel
 			);
 					
-			$this->user_model->add_user($data);			   
-			$this->read_users();
+			$this->user_model->add_user($data);	
+
+			$session_data = $this->session->userdata('logged_in');
+			$user['users'] = $this->user_model->read_user($session_data['username']);			   
+			$this->load->view('admin/users/user', $user);					   			
 		}
 		else 
 		{
@@ -78,11 +83,44 @@ class Crud_user_controller extends CI_Controller {
 		
 		if($this->session->userdata('logged_in'))
 		{
-			
+			$username = $this->input->get('username');			
+			$nivel = $this->input->get('nivel');
+	
+			$data = array(
+				'username' => $username,				
+				'nivel_seguridad' => $nivel
+			);
+
+			$this->user_model->edit_user($data, $username);	
+
+			$session_data = $this->session->userdata('logged_in');
+			$user['users'] = $this->user_model->read_user($session_data['username']);			   
+			$this->load->view('admin/users/user', $user);					   			
+
 		}
 		else 
 		{
 			redirect('main_controller', 'refresh');
+		}
+	}
+
+	public function search_user()
+	{
+		$this->load->model('/admin/user/user_model', 'user_model');
+		
+		$search = $this->input->get('search',TRUE);
+		$option = $this->input->get('option',TRUE);
+
+		if($this->session->userdata('logged_in'))
+		{
+			$session_data = $this->session->userdata('logged_in');
+												 				  
+			$user['users'] = $this->user_model->search_user($search, $option);			   
+			$this->load->view('admin/users/user', $user);
+		}
+		else
+		{
+			redirect('main_controller', 'refresh');		
 		}
 	}
 	
