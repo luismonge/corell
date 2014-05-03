@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="nivel" class="col-sm-2 control-label">Nivel</label>
+			<label for="nivel" class="col-sm-2 control-label">Rol</label>
 			<div class="col-sm-10">
 					<select class="form-control" id="nivel">
 						<option><?php echo $nivel; ?></option>
@@ -41,13 +41,25 @@
 			</div>
 		</div>	 
 		<div class="col-sm-offset-0 col-sm-10">
-		      <button id="btn_submit" type="submit" class="btn btn-primary">Actualizar</button>	     
-		      <button id="btn_submit" type="button" class="btn btn-primary">Cambiar contraseña</button>	      		 		
+		      <button id="btn_submit" type="submit" class="btn btn-success">Actualizar</button>	     
+		      <a href="#">
+			   		<button id="btn_return" class="btn btn-primary">Regresar</button>
+			  </a>
+		      <button id="btn_pass" type="button" class="btn btn-primary">Cambiar contraseña</button>	      		 		
 		</div>
 
 	 </div>
   	</form>
-	</div>
-  		 <script type="text/javascript" src="<?php echo base_url('/public/js/reload.js') ?>"></script>	 
+	</div>  		
 
 </div>
+	 <script type="text/javascript">
+		$( 'div#main_content #form_edit' ).submit(function(){	
+			var username = document.getElementById('username').value;		
+			var nivel = document.getElementById('nivel').value;
+			
+			var page = $( this ).attr( 'action' );			
+			$( '#content' ).load( page+"?username="+username+"&nivel="+nivel );		
+			return false;
+		});
+	</script>

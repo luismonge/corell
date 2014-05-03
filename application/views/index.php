@@ -93,8 +93,7 @@
 			</div>
 			<div id="footer">
 				<div id="footer_image">
-					
-					
+					<img src="<?php echo base_url('/public/images/logo2_armabit.png'); ?> ">
 				</div>
 				<p>
 					Integrantes del equipo: <br/>

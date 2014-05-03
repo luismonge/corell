@@ -23,11 +23,28 @@
 					</div> 			
 					
 			    	<div class="col-sm-offset-0 col-sm-10">
-			      		<button id="btn_submit" type="submit" class="btn btn-primary">Añadir</button>	      		
+			      		<button id="btn_submit" type="submit" class="btn btn-success">Añadir</button>	      		
+			      		<a href="#">
+			      			<button id="btn_return" class="btn btn-primary">Regresar</button>
+			      		</a>
 			    	</div>
 			  	</div>
 			</div>
 		 </form>
 	</div>
-	 <script type="text/javascript" src="<?php echo base_url('/public/js/reload.js') ?>"></script>	 
 </div>
+
+
+	 <script type="text/javascript">
+		$( 'div#main_content #form_add' ).submit(function(){	
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			var nivel = document.getElementById('nivel').value;
+			
+			var page = $( this ).attr( 'action' );			
+			$( '#content' ).load( page+"?username="+username+"&password="+password+"&nivel="+nivel );		
+			return false;
+		});
+	</script>
+
+

@@ -17,13 +17,14 @@ class Crud_user_controller extends CI_Controller {
 
 	public function read_users()
 	{
-		$this->load->model('/admin/user/user_model', 'user_model');
-		
+				
 		if($this->session->userdata('logged_in'))
 		{
+			$this->load->model('/admin/user/user_model', 'user_model');
 			$session_data = $this->session->userdata('logged_in');
 												 				  
 			$user['users'] = $this->user_model->read_user($session_data['username']);			   
+			
 			$this->load->view('admin/users/user', $user);
 		}
 		else

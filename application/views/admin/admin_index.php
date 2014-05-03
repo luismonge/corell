@@ -21,6 +21,8 @@
 		
 		<!-- Recargar una parte de la pag -->
 		<script type="text/javascript" src="<?php echo base_url('/public/js/reload.js') ?>"></script>	
+
+
 	</head>
 
 	<body>
@@ -117,13 +119,16 @@
 				</div>
 			</div>
 			<div id="footer">
+				<div id="footer_image">
+					<img src="<?php echo base_url('/public/images/logo2_armabit.png'); ?> ">					
+				</div>
 				<p>
 					Integrantes del equipo: <br/>
-					Carlos Humberto<br/>
-					Martin Francisco<br/>
-					Luis Carlos<br/>
-					Rene Gael<br/>
-					Manuel Armando 
+					Carlos Humberto Lopez Carrillo<br/>
+					Martin Francisco Martinez Federico<br/>
+					Luis Carlos Monge Castro<br/>
+					Rene Gael Rivera Mendoza<br/>
+					Manuel Armando Sierra Fimbres
 				</p>
 			</div>
 		</div>
