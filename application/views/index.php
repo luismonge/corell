@@ -84,10 +84,18 @@
 			</div>
 			
 			<div id="content">
-				<div id="main_content_admin">	
+				<div id="main_content_admin">
+					<div id="main_image">
+						<h1>Sistema de control y registro de llamadas ITH</h1>
+					</div>	
+					
 				</div>
 			</div>
 			<div id="footer">
+				<div id="footer_image">
+					
+					
+				</div>
 				<p>
 					Integrantes del equipo: <br/>
 					Carlos Humberto Lopez Carrillo<br/>
