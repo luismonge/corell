@@ -44,38 +44,6 @@
 						    </a>
 						</div>
 						<div class="navbar-collapse collapse" style="height: 1px;">
-							<ul id="nav" class="nav navbar-nav" >									
-									<li class="list">
-											<a href="<?= site_url('admin_user/crud_user_controller/read_users'); ?>"> Usuarios</a>
-									</li>
-									<li class="list">
-											<a href="<?= site_url('admin_calls/call_controller/read_calls'); ?>"> Llamadas</a>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Tarifas <b class="caret"></b> </a>
-										<ul id= "feeID" class="dropdown-menu">
-											<li>
-												<a href="<?= site_url( 'admin_fee/fee_controller/readFees' ); ?>" >Ver Tarifas</a>
-											</li>
-											<li class="divider"></li>
-											<li>
-												<a href="<?= site_url( 'admin_fee/fee_controller/modifiedFees' ); ?>" >Modificar Tarifas</a>
-											</li>
-										</ul> 
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Extensiones <b class="caret"></b> </a>
-										<ul id = "extensionID" class="dropdown-menu">
-											<li>
-												<a href="<?= site_url( 'admin_ext/extension_controller/insert' ); ?>" >Agregar Extension</a>
-											</li>										
-											<li class="divider"></li>
-											<li>
-												<a href="<?= site_url( 'admin_ext/extension_controller/readExtension' ); ?>" >Ver Extension</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
 								<ul class="nav pull-right">
 									<a id="logout" class="navbar-brand" href="<?= site_url('/login/only_authenticaded_users/logout'); ?>">Cerrar Sesión</a>
 		                    	</ul>
@@ -103,9 +71,58 @@
 			</div>
 			
 			<div id="content">
-				<div id="main_content_admin">	
+				<div id="main_content">		
+					<div id="content_">
+							<form id="form1" method="get" class="form-inline" role="form" action=<?php echo site_url('admin_calls/call_controller/search_call'); ?>>
+						<div class="form-group pull-right">						
+							<select class="form-control" id="options">
+								<option>Destino</option>
+								<option>Origen</option>
+								<option>Extension</option>
+								<option>Usuario</option>
+								<option>Fecha</option>
+							</select>
+							<input type="text" class="form-control" id="search" placeholder="Buscar" name="Buscar">				
+							<button type="submit" class="btn btn-primary button" >Buscar</button>		
+							<a href="<?= site_url('admin_calls/call_controller/read_calls'); ?>">		
+								<button type="button" class="btn btn-primary button">Todos</button>
+							</a>
+						</div>
+					</form>	
+
+					<h1>Llamadas</h1>
+					
+					<table class="table table-hover">
+						<th>ID Llamada</th>
+						<th> Numero Extension </th>
+						<th> Destino Llamada </th>
+						<th>Fecha</th>
+						<th>Duración</th>
+						<th>Plan</th>
+						<th>Costo Estimado</th>
 						
+						<tbody>
+							<?php 				
+								foreach ( $calls-> result() as $row ) 
+								{
+									echo "<tr class= 'success'>";
+										echo "<td >".$row -> id_llamadas."</td>";
+										echo "<td>".$row -> num_ext."</td>";
+										echo "<td>".$row -> destino_llamada."</td>";
+										echo "<td >".$row -> fecha."</td>";
+										echo "<td>".$row -> duracion."</td>";
+										echo "<td>".$row -> id_plan."</td>";
+										echo "<td>".$row -> costo_estimado."</td>";
+										
+									echo "</tr>";									
+								}
+							 ?>
+						</tbody>
+					 </table>
+
+					</div>
 				</div>
+
 			</div>
 			<div id="footer">
 				<div id="footer_image">

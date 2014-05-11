@@ -10,58 +10,51 @@
 	    }
 		
 		function readExtension()
-		{
-		
-			
-			$query = $this -> db -> get( 'Extension' );
+		{	
+			$this->db->select('extension.numero_extension, extension.nombre_extension,usuario.username AS id_usuario');
+			$this->db->from('extension');
+			$this->db->join('usuario', 'extension.id_usuario = usuario.id_user','inner');
+			$query = $this->db->get();
 			return $query;
-			
 		}
-			
-		function modifyByNumberExtension( $numero, $data )
-		{	
-			$this -> db -> where('numeroExtension', $numero);
-			$result = $this -> db-> update( 'Extension', $data ); 
-		
-			if( !$result )
-			{
-				return "Ha Ocurrido un Error. No Se Ha Podido Actualizar";
-			}
-			else
-				return "Se Ha Modificado Correctamente";
-		}
-		
-		function modifyByNameExtension( $nombre, $data )
-		{	
-			$this -> db -> where('nombreExtension', $nombre);
-			$result = $this -> db-> update( 'Extension', $data ); 
-		
-			if( !$result )
-			{
-				return "Ha Ocurrido un Error. No Se Ha Podido Actualizar";
-			}
-			else
-				return "Se Ha Modificado Correctamente";
-		}
-		
-		function insertExtension( $data )
+		function readOnlyOneExtension( $extension )
 		{
-			$result = $this->db->insert('Extension', $data);
+
+			$this->db->select('extension.numero_extension, extension.nombre_extension,usuario.username AS id_usuario');
+			$this->db->from('extension');
+			$this->db->join('usuario', 'extension.id_usuario = usuario.id_user','inner');
+			$this->db->where('extension.numero_extension', $extension); 
+			$query = $this->db->get();
+			return $query;
+		}
 			
-			if( !$result )
+		
+		function insertExtension( $id, $numero, $nombre )
+		{
+
+			$user = "'".$id."';";
+			$query = $this->db->query("select id_user from usuario where username =".$user);
+			$usuario = $query->row( 'id_user' );
+
+			if ($query->num_rows() > 0)
 			{
-				return "Ha Ocurrido un Error. No Se Ha Podido Insertar";
+
+				$data = array(
+				   'numero_extension' => $numero,
+				   'nombre_extension' => $nombre,
+				   'id_usuario' => $usuario
+				);
+				$this->db->insert('extension', $data);
 			}
 			else
-				return "Se Ha Insertado Correctamente";
-			 	
+				return "Nombre de Usuario Introducido No existe. Favor de colocar uno existente";	
 		}
 		
 		function deleteExtension( $numeroExtension )
 		{
 			
-			$this->db->where( 'numeroExtension', $numeroExtension );
-			$result = $this -> db -> delete( 'Extension' ); 
+			$this->db->where( 'numero_extension', $numeroExtension );
+			$result = $this -> db -> delete( 'extension' ); 
 			if( !$result )
 			{
 				return "Ha Ocurrido un Error. No Se Ha Podido Eliminar";
@@ -69,7 +62,56 @@
 			else
 				return "Se Ha Eliminado Correctamente";
 		}
+
+		function updateExtension( $oldNumero, $xUser, $numero, $nombre )
+		{
+			$user = "'".$xUser."';";
+			$query = $this->db->query("select id_user from usuario where username =".$user);
+			$usuario = $query->row( 'id_user' );
+
+
+			if ($query->num_rows() > 0)
+			{
+				$data = array(
+				   'numero_extension' => $numero,
+				   'nombre_extension' => $nombre,
+				   'id_usuario' => $usuario
+				);
+				$this->db->where('numero_extension', $oldNumero);
+				$this->db->update('extension', $data); 
+			}
+			else
+				return "Nombre de Usuario Introducido No existe. Favor de colocar uno existente";	
 		
+		}
+
+		function searchExtension( $search, $option )
+		{
+			$this->db->select('extension.numero_extension, extension.nombre_extension,usuario.username AS id_usuario');
+			$this->db->from('extension');
+			$this->db->join('usuario', 'extension.id_usuario = usuario.id_user','inner');
+
+			switch ($option) 
+			{
+				case "Usuario":
+					$this->db->where('usuario.username', $search); 
+					break;
+
+				case 'NumeroExtension':
+					$this->db->where('extension.numero_extension', $search); 
+					break;
+				
+				case 'NombreExtension':
+					$this->db->where('extension.nombre_extension', $search); 
+					break;
+			}
+
+			$query = $this->db->get();
+			return $query;
+		}
+
+
+
 		
 	}
 

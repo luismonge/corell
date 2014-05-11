@@ -1,4 +1,4 @@
-<div id="main_content">	
+<div id="main_content_2">	
 	<div id="content_">			 
 		<h3>Añadir usuario</h3>
 		<form id="form_add" method="get" class="form" role="form" action=<?php echo site_url('admin_user/crud_user_controller/add_user'); ?>>
@@ -36,7 +36,7 @@
 
 
 	 <script type="text/javascript">
-		$( 'div#main_content #form_add' ).submit(function(){	
+		$( 'div#main_content_2 #form_add' ).submit(function(){	
 			var username = document.getElementById('username').value;
 			var password = document.getElementById('password').value;
 			var nivel = document.getElementById('nivel').value;

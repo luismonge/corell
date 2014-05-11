@@ -1,4 +1,4 @@
-<div id="main_content">		 
+<div id="main_content_2">		 
 	 
 	<div id="content_">
 			 <h3>Editar usuario</h3>
@@ -53,11 +53,12 @@
 	</div>  		
 
 </div>
-	 <script type="text/javascript">
-		$( 'div#main_content #form_edit' ).submit(function(){	
+
+	<script type="text/javascript">
+		$( 'div#main_content_2 #form_edit' ).submit(function(){	
 			var username = document.getElementById('username').value;		
 			var nivel = document.getElementById('nivel').value;
-			
+
 			var page = $( this ).attr( 'action' );			
 			$( '#content' ).load( page+"?username="+username+"&nivel="+nivel );		
 			return false;

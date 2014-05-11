@@ -7,7 +7,7 @@ jQuery(function($) {
 			loading(); // loading
 			setTimeout(function(){ // then show popup, deley in .5 second
 				loadPopup(); // function show popup 
-			}, 500); // .5 second
+			}, 200); // .2 second
 	return false;
 	});
 	

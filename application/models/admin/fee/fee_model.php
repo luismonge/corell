@@ -8,14 +8,14 @@
 	        parent::__construct();
 	        $this->load->database();
 	    }
-		
+	    
 		function fees()
 		{
 			$query = $this -> db -> get( 'TarifasTelefonicas' );
 			return $query;
 			
 		}
-			
+
 		function modifyFee( $plan, $data )
 		{	
 			$this->db->where('nombrePlan', $plan);
@@ -27,9 +27,6 @@
 			}
 			else
 				return "Todo Ha salido Bien";
-					
-				
-			
 		}
 	}
 

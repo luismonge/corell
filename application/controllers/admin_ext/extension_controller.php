@@ -10,27 +10,18 @@
 		}
 		
 		public function readExtension()
-		{
+		{	
 			$this -> load -> model( 'admin/ext/extension_model' );
 			$extension[ 'extensions' ] = $this -> extension_model -> readExtension();
 			$this->load -> view( 'admin/extensions/extension_view', $extension );			
 		}
 		
-		public function delete()
-		{
-			echo $_POST[ 'eliminar' ];
-		}
-		
 		public function deleteExtension()
 		{
-			/*$numero = $_POST[ 'numeroExtension' ];
-			
-			$this -> load -> model( 'extension_model' );
-			$extension = $this -> extension_model -> deleteExtension( $numero );*/
+			$extension = $this->input->get( 'ext' );
 			$this -> load -> model( 'admin/ext/extension_model' );
-			$extension[ 'extensions' ] = $this -> extension_model -> readExtension();
-			$this->load -> view( 'admin/extensions/extension_delete_view', $extension );		
-				
+			$this -> extension_model -> deleteExtension( $extension );		
+			$this->readExtension();		
 		}
 		
 		public function insert()
@@ -40,56 +31,49 @@
 		
 		public function insertExtension()
 		{
+			
 			$nombre = $_POST[ 'nombreExtension' ];
 			$numero = $_POST[ 'numeroExtension' ];
 			$id = $_POST[ 'idUsuario' ];
-			
-			$data = array(
-			   'numeroExtension' => $numero,
-			   'nombreExtension' => $nombre,
-			   'idUsuario' => $id
-			);
-					
+
 			$this -> load -> model( 'admin/ext/extension_model' );
-			$extension = $this -> extension_model -> insertExtension($data);			
+			$extension = $this -> extension_model -> insertExtension( $id, $numero, $nombre );	
+			$this->load->view('admin/admin_index');
 		}
 		
-		
-		public function modifiedExtension()
+		public function modifyExtension()
 		{
-			$this -> load -> view( 'admin/fees/modifyFee' );
+			$ext = $this->input->get( 'ext' );
+			$this -> load -> model( 'admin/ext/extension_model' );
+			$extension[ 'extensions' ] = $this -> extension_model -> readOnlyOneExtension( $ext );			
+			$this->load -> view( 'admin/extensions/extension_update_view', $extension );
+			
 		}
-		
-		public function updateByNumberExtension()
+		public function updateExtension()
 		{
 			$nombre = $_POST[ 'nombreExtension' ];
 			$numero = $_POST[ 'numeroExtension' ];
-			$id = $_POST[ 'idUsuario' ];
-			
-			$data = array(			  
-			   'nombreExtension' => $nombre,
-			   'idUsuario' => $id
-			);
+			$usuario = $_POST[ 'idUsuario' ];
+			$oldNumero = $_POST[ 'oldNumeroExtension' ];
 			
 			$this -> load -> model( 'admin/ext/extension_model' );
-			$extension = $this -> extension_model -> modifyExtension($numero,$data);	
+			$this -> extension_model -> updateExtension($oldNumero, $usuario, $numero, $nombre );	
+			$this->load->view('admin/admin_index');
 		}
-		
-		
-		public function updateByNameExtension()
+		public function searchExtension()
 		{
-			$nombre = $_POST[ 'nombreExtension' ];
-			$numero = $_POST[ 'numeroExtension' ];
-			$id = $_POST[ 'idUsuario' ];
-			
-			$data = array(			  
-			   'numeroExtension' => $numero,
-			   'idUsuario' => $id
-			);
-			
-			$this -> load -> model( 'admin/ext/extension_model' );
-			$extension = $this -> extension_model -> modifyExtension($nombre,$data);	
+
+			$search = $this->input->get('search');
+			$option = $this->input->get('option');
+
+			$this -> load -> model( 'admin/ext/extension_model' );			
+			$extension[ 'extensions' ] = $this -> extension_model -> searchExtension( $search, $option );
+			$this->load -> view( 'admin/extensions/extension_view', $extension );	
 		}
+		
+			
+		
+		
 		
 	}
 

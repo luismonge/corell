@@ -10,12 +10,15 @@ class User_model extends CI_Model{
     }
 	
 	function read_user($id){
+		//Lee a todos los usuarios excepto a si mismo para no mostrarlo
+		$this-> db-> select('username, nivel_seguridad');				
 		$this-> db-> where('username !=', $id);				
 		$query = $this->db->get('usuario');
 		return $query;
 	}
 	
 	function read_one_user($id){
+		//Lee al usuario a editar para mostrar sus datos en la vista
 		$this-> db-> select('username, pass, nivel_seguridad');
 		$this-> db-> from('usuario');
 		$this-> db-> where('username', $id);		
@@ -62,7 +65,7 @@ class User_model extends CI_Model{
 
 	function login($username, $password)
 	{
-		$this-> db-> select('username, pass');
+		$this-> db-> select('username, pass, nivel_seguridad');
 		$this-> db-> from('usuario');
 		$this-> db-> where('username', $username);
 		$this-> db-> where('pass', MD5($password));
@@ -87,11 +90,5 @@ class User_model extends CI_Model{
 	function add_user($data){
 		$this->db->insert('usuario', $data);
 	}
-
-	function borrarUsuario($data){
-		$this->db->where('nocontrol',$data['nocontrol']);
-		$this->db->delete('usuarios');
-	}
-
 }
 ?>

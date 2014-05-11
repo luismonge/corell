@@ -24,7 +24,6 @@
 		
 		public function updateFee()
 		{
-			
 			$plan = $_POST[ 'planType' ];
 			$costo = $_POST[ 'costoMin' ];
 			
@@ -36,13 +35,8 @@
 			$update = $this -> fee_model -> modifyFee( $plan, $data );
 			
 			$this->load->view('admin/admin_index');	
-			$this->load->view('index');	
 			
-		}
-		
-		
-		
-				
+		}		
 	}
 
 ?>

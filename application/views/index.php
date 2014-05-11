@@ -14,6 +14,8 @@
 		<!--    -->
 		<link href="<?php echo base_url('/public/css/main_css.css'); ?> " rel="stylesheet" type="text/css" />
 		
+		
+
 		<!--Popup -->
 		<link href="<?php echo base_url('/public/css/popup/style.css'); ?>" rel="stylesheet" type="text/css" media="all" />
 		<script type="text/javascript" src="<?php echo base_url('/public/js/jquery.min.js') ?>"> </script>
@@ -69,7 +71,7 @@
 					</form>
 
 				</div>
-				<!--your content end-->
+				<!--your content end-->			
 
 			</div>
 			<!--toPopup end-->

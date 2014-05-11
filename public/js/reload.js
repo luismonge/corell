@@ -9,6 +9,12 @@ $( document ).ready( function() {
 		return false;
 	});
 
+	$( 'ul#nav li.dropdown ul li a' ).click(function() {
+		var page = $( this ).attr( 'href' );
+		$( '#content' ).load( page );
+		return false;
+	});
+
 	//Menu
 	$( 'ul#nav li.list a' ).click(function() {
 		var page = $( this ).attr( 'href' );

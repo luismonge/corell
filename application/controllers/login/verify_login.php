@@ -39,7 +39,8 @@ class Verify_login extends CI_Controller {
 			$sess_array = array();
 			foreach ($result as $row) {
 				$sess_array = array(
-					'username' => $row->username
+					'username' => $row->username,
+					'rol' => $row->nivel_seguridad
 				);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
@@ -47,7 +48,7 @@ class Verify_login extends CI_Controller {
 		}
 		else
 		{
-			$this->form_validation->set_message('check_db', 'Invalid username or password');
+			$this->form_validation->set_message('check_db', 'Nombre de usuario o contraseña incorrecto');
 			return False;
 		}
 	}

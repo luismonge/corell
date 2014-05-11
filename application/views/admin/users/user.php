@@ -26,7 +26,6 @@
 	<h1>Usuarios</h1>
 	<table class="table table-hover">
 		<th> Usuario </th>
-		<th> Password </th>
 		<th> Nivel </th>
 		<th> Acciones </th>
 	<?php 
@@ -34,21 +33,20 @@
 		$eliminar = base_url('/public/images/icons/userdelete.png');
 		foreach ($users->result() as $row) {
 			$username = $row->username;
-			echo "<tr class= 'success'>";
-				echo "<td>".$row->username."</td>";
-				echo "<td>".$row->pass."</td>";
+			echo "<tr class= 'info'>";
+				echo "<td>".$row->username."</td>";				
 				echo "<td>".$row->nivel_seguridad."</td>";
 				echo "<td>
 				<a id='link' href=".site_url('admin_user/user_links_controller/edit_user?user='.$username.'')."><img src='$editar' alt='Editar'/> Editar </a>
 				</td>
 				<td>
 				<a id='link' href=".site_url('admin_user/crud_user_controller/delete_user?user='.$username.'')."><img src='$eliminar' alt='Eliminar'/> Eliminar </a>
-				</td>";
+				</td>";			
 		}
+		
 	 ?>
 	 </table>
-	</div>
-
+	</div>	
 </div>
 
 	 <script type="text/javascript">
