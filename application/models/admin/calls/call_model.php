@@ -21,10 +21,10 @@ class Call_model extends CI_Model{
 		
 		switch ($option) {
 			case 'Destino':
-				$this->db->where('destino_llamada', $search);
+				$this->db->where('destino', $search);
 				break;
 			case 'Origen':
-				# code...
+				$this->db->where('origen', $search);
 				break;
 			case 'Usuario':
 				# code...

@@ -1,7 +1,7 @@
 <div id="main_content">	
 	<div id="content_">	
 		<h3>Modificar Extension</h3>
-		<form method="post" action="<?= site_url('admin_ext/extension_controller/updateExtension'); ?>">
+		<form method="post" action="<?php echo site_url('admin_ext/extension_controller/updateExtension'); ?>">
 			<?php 
 				foreach ( $extensions -> result() as $row ) 
 				{

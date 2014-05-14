@@ -1,7 +1,7 @@
 <div id="main_content">	
 	<div id="content_">			 
 		<h3>Actualizar Tarifa</h3>
-		<form id="form_add" method="post" class="form" role="form" action="<?= site_url( 'admin_fee/fee_controller/updateFee' ); ?>">
+		<form id="form_add" method="post" class="form" role="form" action="<?php echo site_url( 'admin_fee/fee_controller/updateFee' ); ?>">
 			<div id="form_content">		
 				<div class="form-group">
 					<label for="Tarifa" class="col-sm-2 control-label">Tarifa</label>

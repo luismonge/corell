@@ -55,13 +55,14 @@ body {
 	background-color: #666;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	display: table;
+
 	margin: 0px auto;
 }
 
 #main_content_admin {
 	width: 100%;	
 	height: 300px;
+	min-height: 500px; 
 	max-width: 100%;
 	max-height: auto;			
 	margin: 0px auto;	
@@ -70,9 +71,7 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	opacity:0.8;
-	filter:alpha(opacity=40);	
-	display: table-cell;
-	vertical-align: middle;
+	filter:alpha(opacity=40);
 }
 
 
@@ -89,8 +88,7 @@ body {
 	margin: 0px auto;
 	background-color: #FFF;		
 	padding-top: 2px;	
-	display: table-cell;
-	vertical-align: middle;
+
 }
 
 #main_content_2 {
@@ -237,4 +235,9 @@ h1 {
 /*Llamadas*/
 label{
 	margin: 0px 15px 0px 0px;
+}
+
+#table_content td {
+	font-family: arial;
+	font-size: 12px;
 }

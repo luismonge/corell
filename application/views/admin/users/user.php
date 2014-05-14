@@ -13,11 +13,11 @@
 			
 			<button type="submit" id="hola" class="btn btn-primary button" >Buscar</button>		
 
-			<a href="<?= site_url('admin_user/crud_user_controller/read_users'); ?>">		
+			<a href="<?php echo site_url('admin_user/crud_user_controller/read_users'); ?>">		
 				<button type="button" class="btn btn-primary button">Todos</button>
 			</a>
 
-			<a href="<?= site_url('admin_user/user_links_controller/add_user'); ?>">		
+			<a href="<?php echo site_url('admin_user/user_links_controller/add_user'); ?>">		
 				<button type="button" class="btn btn-primary button">Añadir Usuario</button>
 			</a>
 		</div>

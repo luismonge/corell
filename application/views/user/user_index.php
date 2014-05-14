@@ -39,13 +39,13 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" id="home" href="<?= site_url('admin/home'); ?>">
-								Administrador
+							<a class="navbar-brand" id="home" href="<?php echo site_url('admin/home'); ?>">
+								Usuario
 						    </a>
 						</div>
 						<div class="navbar-collapse collapse" style="height: 1px;">
 								<ul class="nav pull-right">
-									<a id="logout" class="navbar-brand" href="<?= site_url('/login/only_authenticaded_users/logout'); ?>">Cerrar Sesión</a>
+									<a id="logout" class="navbar-brand" href="<?php echo site_url('/login/only_authenticaded_users/logout'); ?>">Cerrar Sesión</a>
 		                    	</ul>
 		            	</div>											
 					</div>
@@ -84,7 +84,7 @@
 							</select>
 							<input type="text" class="form-control" id="search" placeholder="Buscar" name="Buscar">				
 							<button type="submit" class="btn btn-primary button" >Buscar</button>		
-							<a href="<?= site_url('admin_calls/call_controller/read_calls'); ?>">		
+							<a href="<?php echo site_url('admin_calls/call_controller/read_calls'); ?>">		
 								<button type="button" class="btn btn-primary button">Todos</button>
 							</a>
 						</div>
@@ -92,33 +92,44 @@
 
 					<h1>Llamadas</h1>
 					
-					<table class="table table-hover">
-						<th>ID Llamada</th>
-						<th> Numero Extension </th>
-						<th> Destino Llamada </th>
-						<th>Fecha</th>
-						<th>Duración</th>
-						<th>Plan</th>
-						<th>Costo Estimado</th>
-						
-						<tbody>
-							<?php 				
-								foreach ( $calls-> result() as $row ) 
-								{
-									echo "<tr class= 'success'>";
-										echo "<td >".$row -> id_llamadas."</td>";
-										echo "<td>".$row -> num_ext."</td>";
-										echo "<td>".$row -> destino_llamada."</td>";
-										echo "<td >".$row -> fecha."</td>";
-										echo "<td>".$row -> duracion."</td>";
-										echo "<td>".$row -> id_plan."</td>";
-										echo "<td>".$row -> costo_estimado."</td>";
-										
-									echo "</tr>";									
-								}
-							 ?>
-						</tbody>
-					 </table>
+					<div id="table_content" class="table-responsive">
+						<table class="table table-hvoer">
+							<th>ID Llamada</th>
+							<th>Extension Origen</th>
+							<th>Extension Destino </th>
+							<th>Plan</th>
+							<th>Fecha Inicio</th>
+							<th>Fecha Contesta</th>
+							<th>Fecha Fin</th>
+							<th>Segundos Totales</th>
+							<th>Segundos Contables</th>
+							<th>Status</th>
+							
+							<tbody>
+								<?php 	
+									$segTotal = 0;			
+									foreach ( $calls-> result() as $row ) 
+									{
+
+										$segTotal += $row -> seg_contesta_fin;
+
+										echo "<tr class= 'info'>";
+											echo "<td>".$row -> id_llamada."</td>";
+											echo "<td>".$row -> origen."</td>";
+											echo "<td>".$row -> destino."</td>";
+											echo "<td>".$row -> tipo_plan."</td>";
+											echo "<td>".$row -> fecha_inicio."</td>";
+											echo "<td>".$row -> fecha_contestado."</td>";
+											echo "<td>".$row -> fecha_fin_llamada."</td>";
+											echo "<td>".$row -> seg_inicio_fin."</td>";
+											echo "<td>".$row -> seg_contesta_fin."</td>";
+											echo "<td>".$row -> status."</td>";
+										echo "</tr>";									
+									}
+								 ?>
+							</tbody>
+						 </table>		 
+					</div>
 
 					</div>
 				</div>

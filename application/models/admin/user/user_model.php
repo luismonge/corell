@@ -5,8 +5,9 @@ class User_model extends CI_Model{
 	function __construct()
     {
         // Call the Model constructor
-        parent::__construct();
+        parent::__construct();        
         $this->load->database();
+
     }
 	
 	function read_user($id){
@@ -61,6 +62,7 @@ class User_model extends CI_Model{
 	{
 		$this->db->where('username', $username);
 		$this->db->update('usuario', $data);
+
 	}
 
 	function login($username, $password)
@@ -72,8 +74,18 @@ class User_model extends CI_Model{
 		$this-> db-> limit(1);		
 		$query = $this->db->get();
 		
+		date_default_timezone_set('America/Hermosillo');
+        $fecha = date('Y-m-d H:i:s');
+		$accion = "Login";
+		$bita = array(
+			'usuario' => $username, 
+			'accion' => $accion, 
+			'fecha' => $fecha
+		);
+
 		if ($query->num_rows() == 1)
 		{
+			$this->db->insert('Bitacora', $bita);
 			return $query->result();
 		}
 		else {

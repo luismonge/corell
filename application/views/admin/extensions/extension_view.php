@@ -14,7 +14,7 @@
 			
 			<button type="submit" id="hola" class="btn btn-primary button" >Buscar</button>		
 
-			<a href="<?= site_url( 'admin_ext/extension_controller/readExtension' ); ?>">		
+			<a href="<?php echo site_url( 'admin_ext/extension_controller/readExtension' ); ?>">		
 				<button type="button" class="btn btn-primary button">Todos</button>
 			</a>
 		</div>

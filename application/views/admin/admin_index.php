@@ -39,27 +39,27 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" id="home" href="<?= site_url('admin/home'); ?>">
+							<a class="navbar-brand" id="home" href="<?php echo site_url('admin/home'); ?>">
 								Administrador
 						    </a>
 						</div>
 						<div class="navbar-collapse collapse" style="height: 1px;">
 							<ul id="nav" class="nav navbar-nav" >									
 									<li class="list">
-											<a href="<?= site_url('admin_user/crud_user_controller/read_users'); ?>"> Usuarios</a>
+											<a href="<?php echo site_url('admin_user/crud_user_controller/read_users'); ?>"> Usuarios</a>
 									</li>
 									<li class="list">
-											<a href="<?= site_url('admin_calls/call_controller/read_calls'); ?>"> Llamadas</a>
+											<a href="<?php echo site_url('admin_calls/call_controller/read_calls'); ?>"> Llamadas</a>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Tarifas <b class="caret"></b> </a>
 										<ul id= "feeID" class="dropdown-menu">
 											<li>
-												<a href="<?= site_url( 'admin_fee/fee_controller/readFees' ); ?>" >Ver Tarifas</a>
+												<a href="<?php echo site_url( 'admin_fee/fee_controller/readFees' ); ?>" >Ver Tarifas</a>
 											</li>
 											<li class="divider"></li>
 											<li>
-												<a href="<?= site_url( 'admin_fee/fee_controller/modifiedFees' ); ?>" >Modificar Tarifas</a>
+												<a href="<?php echo site_url( 'admin_fee/fee_controller/modifiedFees' ); ?>" >Modificar Tarifas</a>
 											</li>
 										</ul> 
 									</li>
@@ -67,17 +67,17 @@
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Extensiones <b class="caret"></b> </a>
 										<ul id = "extensionID" class="dropdown-menu">
 											<li>
-												<a href="<?= site_url( 'admin_ext/extension_controller/insert' ); ?>" >Agregar Extension</a>
+												<a href="<?php echo site_url( 'admin_ext/extension_controller/insert' ); ?>" >Agregar Extension</a>
 											</li>										
 											<li class="divider"></li>
 											<li>
-												<a href="<?= site_url( 'admin_ext/extension_controller/readExtension' ); ?>" >Ver Extension</a>
+												<a href="<?php echo site_url( 'admin_ext/extension_controller/readExtension' ); ?>" >Ver Extension</a>
 											</li>
 										</ul>
 									</li>
 								</ul>
 								<ul class="nav pull-right">
-									<a id="logout" class="navbar-brand" href="<?= site_url('/login/only_authenticaded_users/logout'); ?>">Cerrar Sesión</a>
+									<a id="logout" class="navbar-brand" href="<?php echo site_url('/login/only_authenticaded_users/logout'); ?>">Cerrar Sesión</a>
 		                    	</ul>
 		            	</div>											
 					</div>
